@@ -6,18 +6,17 @@ $error = '';
 $validate = '';
 
 if (isset($_POST['submit'])) {
-    $username = stripcslashes($_POST['username']);
-    $username = mysql_real_escape_string($connect, $username);
-    $password = stripcslashes($_POST['password']);
-    $password = mysql_real_escape_string($connect, $password);
-    $repass = stripcslashes($_POST['repass']);
-    $repass = mysql_real_escape_string($connect, $repass);
-    $fullName = stripcslashes($_POST['fullName']);
-    $fullName = mysql_real_escape_string($connect, $fullName);
-    $email = stripcslashes($_POST['email']);
-    $email = mysql_real_escape_string($connect, $email);
-    $ICPassport = stripcslashes($_POST['{ICPassport}']);
-    $ICPassport = mysql_real_escape_string($connect, $ICPassport);
+    $username   = $_POST['username'];
+    $password   = $_POST['password'];
+    $repass     =$_POST['repass'];
+    $fullName   = $_POST['fullName'];
+    $email      = $_POST['email'];
+    $ICPassport = $_POST['ICPassport'];
+
+    mysqli_query($connect, "INSERT INTO patient VALUES('', 'username', 'password', 'fullName', 'email', 'ICPassport')") or die(mysqli_error($connect));
+
+    echo "<div align='center'><h5> Saving Data.... </h5></div>";
+    echo "<meta http-equiv='refresh' content='1;url=http://localhost/PCVS/login.php'>";
 
     if(!empty(trim($username)) && !empty(trim($password)) && !empty(trim($repass)) && !empty(trim($fullName)) && !empty(trim($email)) && !empty(trim($ICPassport))){
         if ($password == $repass) {
@@ -44,13 +43,14 @@ if (isset($_POST['submit'])) {
     }
 }
 
-function check_uname($username,$con){
-    $uname = mysql_real_escape_string($con,$username);
-    $query =  "SELECT * FROM patient WHERE username='$uname'";
-    if ($result=mysqli_query($con,$query)) return mysqli_query($result);
+function check_uname($username,$connect){
+    $uname = mysqli_real_escape_string($connect,$_GET['username']);
+    $query =  "SELECT * FROM patient WHERE username'$uname'";
+    if ($result=mysqli_query($connect,$query)) return mysqli_num_rows($result);
 }
 
-?>
+?> 
+
 
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -58,9 +58,9 @@ function check_uname($username,$con){
 <head>
     <meta charset="utf-8">
     <title>Register Patient</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
      
     <!-- costum css -->
     <link rel="stylesheet" href="style.css">
@@ -123,3 +123,4 @@ function check_uname($username,$con){
 
 </body>
 </html>
+
