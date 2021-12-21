@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2021 at 07:35 AM
+-- Generation Time: Dec 20, 2021 at 03:34 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admins` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `img` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -43,10 +42,10 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `img`, `name`, `address`, `phone_number`, `username`, `password`, `created_at`, `updated_at`) VALUES
-(1, '1638238253.jpg', 'Merta Yoga', 'Ahmad Yani Street, Anugrah VII Number 17', '087855117273', 'admin', '$2y$10$qUomVEdKI1BF8l75rWUs1uuBsohxJQHa2WLJjM43WEIUNwxqKlDWC', '2021-11-29 18:10:53', '2021-11-29 18:10:53'),
-(2, '1638493160.jpg', 'Merta Yoga 2', 'Ahmad Yani Street, Anugrah VII Number 17 2', '0878551172732', 'admin2', '$2y$10$ofi5mq9a.99DXsHUlEHh.erFUp2hJU.XPGktBE/IIuU2guxZFYcP6', '2021-12-02 16:59:20', '2021-12-02 16:59:20'),
-(3, '1638493284.jpg', 'Merta Yoga 23', 'Ahmad Yani Street, Anugrah VII Number 17 23', '08785511727323', 'admin23', '$2y$10$lHqCaS.PjTXNAEjKIUUm6.3C4FnKBMLgORczjjnVLGXjXXDLfA6Ai', '2021-12-02 17:01:25', '2021-12-02 17:01:25');
+INSERT INTO `admins` (`id`, `name`, `address`, `phone_number`, `username`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'Merta Yoga', 'Ahmad Yani Street, Anugrah VII Number 17', '087855117273', 'admin', '$2y$10$qUomVEdKI1BF8l75rWUs1uuBsohxJQHa2WLJjM43WEIUNwxqKlDWC', '2021-11-29 18:10:53', '2021-12-06 17:45:10'),
+(2, 'Merta Yoga 2', 'Ahmad Yani Street, Anugrah VII Number 17 2', '0878551172732', 'admin2', '$2y$10$ofi5mq9a.99DXsHUlEHh.erFUp2hJU.XPGktBE/IIuU2guxZFYcP6', '2021-12-02 16:59:20', '2021-12-02 16:59:20'),
+(3, 'Merta Yoga 23', 'Ahmad Yani Street, Anugrah VII Number 17 23', '08785511727323', 'admin23', '$2y$10$lHqCaS.PjTXNAEjKIUUm6.3C4FnKBMLgORczjjnVLGXjXXDLfA6Ai', '2021-12-02 17:01:25', '2021-12-02 17:01:25');
 
 -- --------------------------------------------------------
 
@@ -94,7 +93,6 @@ INSERT INTO `healthcare_centres` (`id`, `name`, `address`, `created_at`, `update
 CREATE TABLE `healthcare_staff` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `healthcare_centre_id` int(11) NOT NULL,
-  `img` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `staff_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -110,9 +108,9 @@ CREATE TABLE `healthcare_staff` (
 -- Dumping data for table `healthcare_staff`
 --
 
-INSERT INTO `healthcare_staff` (`id`, `healthcare_centre_id`, `img`, `staff_id`, `name`, `address`, `phone_number`, `email`, `username`, `password`, `created_at`, `updated_at`) VALUES
-(1, 1, '1638489741.jpg', '123', 'staff 1', 'address', '85616512322', 'staff@gmail.com', 'staff', '$2y$10$P23dfP0EbLvGbdrwl4R98e9jnXjes/WPBOHqu4KxEbsnqC4qls.k.', '2021-12-02 16:02:21', '2021-12-02 16:02:21'),
-(2, 1, '1638493591.jpg', '1234', 'staff2', 'efasawefd', '85416834', 'staff2@gmail.com', 'staff2', '$2y$10$c5PQp3mSNaJNhiZIAZQhT.5cuFYsV7ZhQ0N1PlnYjtlzch8deWHcC', '2021-12-02 17:06:32', '2021-12-02 17:06:32');
+INSERT INTO `healthcare_staff` (`id`, `healthcare_centre_id`, `staff_id`, `name`, `address`, `phone_number`, `email`, `username`, `password`, `created_at`, `updated_at`) VALUES
+(1, 1, '123', 'staff 1', 'address', '85616512322', 'staff@gmail.com', 'staff', '$2y$10$P23dfP0EbLvGbdrwl4R98e9jnXjes/WPBOHqu4KxEbsnqC4qls.k.', '2021-12-02 16:02:21', '2021-12-02 16:02:21'),
+(2, 1, '1234', 'staff2', 'efasawefd', '85416834', 'staff2@gmail.com', 'staff2', '$2y$10$c5PQp3mSNaJNhiZIAZQhT.5cuFYsV7ZhQ0N1PlnYjtlzch8deWHcC', '2021-12-02 17:06:32', '2021-12-02 17:06:32');
 
 -- --------------------------------------------------------
 
@@ -139,7 +137,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2021_11_30_022215_create_healthcare_centres_table', 2),
 (7, '2021_11_30_063827_create_healthcare_staff_table', 3),
 (8, '2021_12_02_020420_create_vaccine_batches_table', 3),
-(9, '2021_12_03_030401_create_patients_table', 4);
+(9, '2021_12_03_030401_create_patients_table', 4),
+(10, '2021_12_04_050117_create_vaccine_patients_table', 5);
 
 -- --------------------------------------------------------
 
@@ -161,7 +160,6 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `patients` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `img` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ic_passport` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -177,8 +175,8 @@ CREATE TABLE `patients` (
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`id`, `img`, `ic_passport`, `name`, `address`, `phone_number`, `email`, `username`, `password`, `created_at`, `updated_at`) VALUES
-(3, '1638511970.png', '123456', 'Merta Yoga', 'Ahmad Yani Street, Anugrah VII Number 17', '087855117273', 'mertayoga17.my@gmail.com', 'patient', '$2y$10$Xp5xlmxMKkUQbhigirzAcuKKVlK4q.yvBvAuvw4LYP4VICuZ9w1SO', '2021-12-02 22:12:50', '2021-12-02 22:12:50');
+INSERT INTO `patients` (`id`, `ic_passport`, `name`, `address`, `phone_number`, `email`, `username`, `password`, `created_at`, `updated_at`) VALUES
+(3, '123456', 'Merta Yoga', 'Ahmad Yani Street, Anugrah VII Number 17', '087855117273', 'mertayoga17.my@gmail.com', 'patient', '$2y$10$Xp5xlmxMKkUQbhigirzAcuKKVlK4q.yvBvAuvw4LYP4VICuZ9w1SO', '2021-12-02 22:12:50', '2021-12-02 22:12:50');
 
 -- --------------------------------------------------------
 
@@ -243,7 +241,33 @@ CREATE TABLE `vaccine_batches` (
 --
 
 INSERT INTO `vaccine_batches` (`id`, `vaccine_id`, `healthcare_centre_id`, `code`, `start_date`, `end_date`, `qty_available`, `qty_administered`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Kxx1', '2021-12-03', '2021-12-10', 50, 0, '2021-12-02 16:02:41', '2021-12-02 16:02:41');
+(1, 1, 1, 'Kxx1', '2021-12-03', '2021-12-10', 2, 2, '2021-12-02 16:02:41', '2021-12-06 17:16:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vaccine_patients`
+--
+
+CREATE TABLE `vaccine_patients` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `vaccine_batch_id` int(11) NOT NULL,
+  `patient_id` int(11) NOT NULL,
+  `vaccine_date` date NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `vaccine_patients`
+--
+
+INSERT INTO `vaccine_patients` (`id`, `vaccine_batch_id`, `patient_id`, `vaccine_date`, `status`, `note`, `created_at`, `updated_at`) VALUES
+(1, 1, 3, '2021-12-07', 'confirmed', '-', '2021-12-05 20:01:52', '2021-12-06 17:09:14'),
+(2, 1, 3, '2021-12-09', 'confirmed', '-', '2021-12-05 23:18:26', '2021-12-06 17:05:11'),
+(3, 1, 3, '2021-12-08', 'pending', '-', '2021-12-06 17:17:33', '2021-12-06 17:17:33');
 
 --
 -- Indexes for dumped tables
@@ -326,6 +350,12 @@ ALTER TABLE `vaccine_batches`
   ADD UNIQUE KEY `vaccine_batches_code_unique` (`code`);
 
 --
+-- Indexes for table `vaccine_patients`
+--
+ALTER TABLE `vaccine_patients`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -357,7 +387,7 @@ ALTER TABLE `healthcare_staff`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `patients`
@@ -382,6 +412,12 @@ ALTER TABLE `vaccines`
 --
 ALTER TABLE `vaccine_batches`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `vaccine_patients`
+--
+ALTER TABLE `vaccine_patients`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
